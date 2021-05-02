@@ -30,7 +30,8 @@ class WATabBarController: UITabBarController {
     //Creating the favourites VC to add it in the tab bar
     func createFavouritesNavigationController() -> UINavigationController{
         let favourtiesVC = FavouritesVC()
-        favourtiesVC.title = AppMessages.favourtieCities.rawValue
+        favourtiesVC.title = AppMessages.favouriteCities.rawValue
+        favourtiesVC.favouritesViewModel = FavouritesViewModel.init(favouritesDelegate: favourtiesVC)
         //Setting the icon in the tab bar to the default favourite icon
         favourtiesVC.tabBarItem = UITabBarItem.init(tabBarSystemItem: .favorites, tag: 1)
         return UINavigationController(rootViewController: favourtiesVC)

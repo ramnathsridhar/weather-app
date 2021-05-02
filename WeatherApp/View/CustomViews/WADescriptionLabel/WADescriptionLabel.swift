@@ -18,7 +18,7 @@ class WADescriptionLabel: UILabel {
         self.textAlignment = .center
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 10
-        self.backgroundColor = UIColor.init(hexString: "#ACD4F1", alpha: 0.5)
+        self.backgroundColor = UIColor.init(hexString: ColorConstants.secondaryBlueColour, alpha: 0.5)
         self.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
         self.adjustsFontSizeToFitWidth = true
         self.minimumScaleFactor = 0.90

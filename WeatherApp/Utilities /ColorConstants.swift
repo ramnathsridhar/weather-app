@@ -8,6 +8,7 @@
 import Foundation
 struct ColorConstants {
     static let primaryBlueColour = "#2F6EB6"
+    static let secondaryBlueColour = "#ACD4F1"
     static let whiteColour = "#FFFFFF"
     static let blackColour = "#000000"
 }

@@ -23,6 +23,8 @@ class SearchCityVC: UIViewController {
     }
     
     func setupUI(){
+        self.view.backgroundColor = UIColor.init(hexString: ColorConstants.primaryBlueColour)
+        self.logoImageView.image = UIImage.init(named: ImageConstants.globeIcon.rawValue)
         self.cityNameTextField.layer.cornerRadius = 10
         self.submitButton.layer.cornerRadius = 10
         self.submitButton.setTitleColor(UIColor.init(hexString: ColorConstants.primaryBlueColour), for: .normal)
@@ -31,7 +33,6 @@ class SearchCityVC: UIViewController {
     
     func setUpAnimation() {
         UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat,.autoreverse]) {
-           // self.logoImageView.transform = self.logoImageView.transform.rotated(by: .pi * 2)
             self.logoImageView.transform = CGAffineTransform.init(scaleX: 1.2, y: 1.2)
         } completion: { (completed) in
             print(completed)
@@ -59,7 +60,7 @@ extension SearchCityVC: SearchCityNameDelegate{
     }
     
     func searchForCityFailed(errorMessage: String) {
-        self.displayErrorAlertPopup(alertTitle: ErrorMessages.errorString.rawValue, alertMessage: errorMessage, buttonTitle: AppMessages.okString.rawValue)
+        self.displayAlertPopup(alertTitle: ErrorMessages.errorString.rawValue, alertMessage: errorMessage, buttonTitle: AppMessages.okString.rawValue)
     }
 }
 
