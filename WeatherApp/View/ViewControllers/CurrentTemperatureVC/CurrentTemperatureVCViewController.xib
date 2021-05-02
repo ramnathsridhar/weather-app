@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrentTemperatureVCViewController" customModule="WeatherApp" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundImageView" destination="h1L-wb-xOB" id="vVw-u3-lYC"/>
                 <outlet property="currentTemperatureLabel" destination="K22-aK-upv" id="LhN-BS-Kkd"/>
                 <outlet property="currentWeatherConditionImageView" destination="bpX-EU-rJP" id="XIa-Hl-Y1U"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -30,7 +31,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K22-aK-upv" customClass="WAPrimaryLabel" customModule="WeatherApp" customModuleProvider="target">
-                    <rect key="frame" x="20" y="252" width="403" height="35"/>
+                    <rect key="frame" x="20" y="254" width="403" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="mMx-la-3Xc"/>
                     </constraints>
@@ -42,6 +43,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="K22-aK-upv" secondAttribute="bottom" constant="15" id="7wJ-FQ-ERY"/>
                 <constraint firstItem="bpX-EU-rJP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-20" id="B3f-s5-HGO"/>
                 <constraint firstAttribute="bottom" secondItem="h1L-wb-xOB" secondAttribute="bottom" id="B9j-va-Gy6"/>
                 <constraint firstItem="h1L-wb-xOB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Cji-Rj-b9q"/>
@@ -49,7 +51,6 @@
                 <constraint firstItem="h1L-wb-xOB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="L4C-Vd-cCu"/>
                 <constraint firstItem="bpX-EU-rJP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="S2w-G9-Uls"/>
                 <constraint firstItem="h1L-wb-xOB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bcF-Eh-DYp"/>
-                <constraint firstItem="K22-aK-upv" firstAttribute="top" secondItem="bpX-EU-rJP" secondAttribute="bottom" constant="20" id="l3a-i8-8g3"/>
                 <constraint firstItem="K22-aK-upv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="xbE-JC-NOP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

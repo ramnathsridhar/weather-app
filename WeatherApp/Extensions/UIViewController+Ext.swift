@@ -46,7 +46,7 @@ extension UIViewController{
     }
     
     //To display error popup
-    func displayErrorAlertPopup(alertTitle:String,alertMessage:String,buttonTitle:String,actionOnClickOfOk:((UIAlertAction) -> Void)? = nil){
+    func displayAlertPopup(alertTitle:String,alertMessage:String,buttonTitle:String,actionOnClickOfOk:((UIAlertAction) -> Void)? = nil){
         //Create the alert
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle:.alert)
 
@@ -56,5 +56,13 @@ extension UIViewController{
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    //Function to add chid view controllers in a container view 
+    func add(childVC:UIViewController,to containerView:UIView){
+            self.addChild(childVC)
+            containerView.addSubview(childVC.view)
+            childVC.view.frame = containerView.bounds
+            childVC.didMove(toParent: self)
     }
 }

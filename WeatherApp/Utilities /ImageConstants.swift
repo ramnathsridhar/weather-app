@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ImageConstants : String , Error {
+enum ImageConstants : String{
     case thunderStormOne = "tstorm1"
     case thunderStormThree = "tstorm3"
     case lightRain = "light_rain"

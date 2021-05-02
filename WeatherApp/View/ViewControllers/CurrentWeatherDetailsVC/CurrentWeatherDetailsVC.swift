@@ -48,12 +48,12 @@ class CurrentWeatherDetailsVC: UIViewController {
     }
     
     func configureDescritpionLabels(){
-        self.maximumTempLabel.text = "Maximum temperature is" + String.space + String.init(describing: self.maxTemp).getTemperatureInCelcius()
-        self.minimumTempLabel.text = "Minimum temperature is" + String.space + String.init(describing: self.minTemp).getTemperatureInCelcius()
-        self.humidityLabel.text = "Humidity temperature is" + String.space + String.init(describing: self.humidity) + String.percentage
-        self.feelsLikeLabel.text = "Feels like" + String.space + String.init(describing: self.feelsLike).getTemperatureInCelcius()
-        self.sunriseTimeLabel.text = "Sunrise expected at" + String.space + String.init(describing: self.sunriseTime).createTime()
-        self.sunsetTimeLabel.text = "Sunset expected at" + String.space + String.init(describing: self.sunsetTime).createTime()
-        self.updatedTimeLabel.text = "Updated at :" + String.space + String.init(describing: self.updatedTime).createDateTime()
+        self.maximumTempLabel.text = AppMessages.maxTempIs.rawValue + String.space + String.init(describing: self.maxTemp).getTemperatureInCelcius()
+        self.minimumTempLabel.text = AppMessages.minTempIs.rawValue + String.space + String.init(describing: self.minTemp).getTemperatureInCelcius()
+        self.humidityLabel.text = AppMessages.humidityIs.rawValue + String.space + String.init(describing: self.humidity) + String.percentage
+        self.feelsLikeLabel.text = AppMessages.feelsLike.rawValue + String.space + String.init(describing: self.feelsLike).getTemperatureInCelcius()
+        self.sunriseTimeLabel.text = AppMessages.sunriseExpectedAt.rawValue + String.space + String.init(describing: self.sunriseTime).createTime()
+        self.sunsetTimeLabel.text = AppMessages.sunsetExpectedAt.rawValue + String.space + String.init(describing: self.sunsetTime).createTime()
+        self.updatedTimeLabel.text = AppMessages.updatedAt.rawValue + String.space + String.init(describing: self.updatedTime).createDateTime()
     }
 }

@@ -10,6 +10,8 @@ import Foundation
 protocol CityWeatherDelegate:AnyObject{
     func getWeatherForCitySuccessful(weatherDetails:WeatherModel)
     func getWeatherForCityFailed(errorMessage:String)
+    func addFavouriteSuccessul()
+    func addFavouriteFailed(errorMessage:String)
 }
 
 class WeatherInformationViewModel{
@@ -37,4 +39,14 @@ class WeatherInformationViewModel{
             }
         }
     }
+    
+    func addFavourite(){
+        PersistenceManager.updateFavourites(favourite: self.cityName, actionType: .add) { (error) in
+            if let error = error {
+                self.weatherDelegate.addFavouriteFailed(errorMessage: (error as? ErrorMessages)?.rawValue ?? String.empty)
+            }
+            self.weatherDelegate.addFavouriteSuccessul()            
+        }
+    }
+    
 }

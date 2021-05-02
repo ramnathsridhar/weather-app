@@ -34,30 +34,31 @@ class WeatherInformationVC: UIViewController {
     }
 
     @objc func addFavButtonTapped(){
-        PersistenceManager.updateFavourites(favourite: self.weatherDetailsVM?.cityName, actionType: .add) { (error) in
-            if let error = error {
-                self.displayErrorAlertPopup(alertTitle: ErrorMessages.errorString.rawValue, alertMessage: (error as? ErrorMessages)?.rawValue ?? String.empty, buttonTitle: AppMessages.okString.rawValue)
-            }
-            self.displayErrorAlertPopup(alertTitle: AppMessages.successString.rawValue, alertMessage: AppMessages.addFavouriteSuccessful.rawValue, buttonTitle: AppMessages.okString.rawValue)
-        }
+        self.weatherDetailsVM?.addFavourite()
     }
     
     func setupUI(){
         DispatchQueue.main.async {            
+            self.view.backgroundColor = UIColor.init(hexString: ColorConstants.primaryBlueColour)
+            
+        //Adding the current temperature and weather image
         self.add(childVC: CurrentTemperatureVCViewController.init(weatherCode: self.weatherDetailsVM?.cityWeatherDetails?.weather.first?.id ?? 0, currentTemperature: self.weatherDetailsVM?.cityWeatherDetails?.main.temp ?? 0), to: self.currentWeatherDetilsView)
+            
+        //Adding the additional weather details for the city with corresponding labels on screen
         self.add(childVC: CurrentWeatherDetailsVC.init(maxTemp: self.weatherDetailsVM?.cityWeatherDetails?.main.tempMax ?? 0, minTemp: self.weatherDetailsVM?.cityWeatherDetails?.main.tempMin ?? 0, humidity: self.weatherDetailsVM?.cityWeatherDetails?.main.humidity ?? 0, feelsLike: self.weatherDetailsVM?.cityWeatherDetails?.main.feelsLike ?? 0, sunriseTime: self.weatherDetailsVM?.cityWeatherDetails?.sys.sunrise ?? 0, sunsetTime: self.weatherDetailsVM?.cityWeatherDetails?.sys.sunset ?? 0, updatedTime: self.weatherDetailsVM?.cityWeatherDetails?.dt ?? 0), to: self.weatherDetailsView)
         }
-    }
-    
-    func add(childVC:UIViewController,to containerView:UIView){
-            self.addChild(childVC)
-            containerView.addSubview(childVC.view)
-            childVC.view.frame = containerView.bounds
-            childVC.didMove(toParent: self)
     }
 }
 
 extension WeatherInformationVC : CityWeatherDelegate{
+    func addFavouriteSuccessul() {
+        self.displayAlertPopup(alertTitle: AppMessages.successString.rawValue, alertMessage: AppMessages.addFavouriteSuccessful.rawValue, buttonTitle: AppMessages.okString.rawValue)
+    }
+    
+    func addFavouriteFailed(errorMessage: String) {
+        self.displayAlertPopup(alertTitle: ErrorMessages.errorString.rawValue, alertMessage: errorMessage, buttonTitle: AppMessages.okString.rawValue)
+    }
+    
     func getWeatherForCitySuccessful(weatherDetails: WeatherModel) {
         self.dismissLoadingView()
         self.setupUI()
@@ -65,7 +66,7 @@ extension WeatherInformationVC : CityWeatherDelegate{
     
     func getWeatherForCityFailed(errorMessage: String) {
         self.dismissLoadingView()
-        self.displayErrorAlertPopup(alertTitle: ErrorMessages.errorString.rawValue, alertMessage: errorMessage, buttonTitle: AppMessages.okString.rawValue) { (action) in
+        self.displayAlertPopup(alertTitle: ErrorMessages.errorString.rawValue, alertMessage: errorMessage, buttonTitle: AppMessages.okString.rawValue) { (action) in
             self.navigationController?.popViewController(animated: true)
         }
     }
