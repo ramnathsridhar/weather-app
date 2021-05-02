@@ -8,26 +8,43 @@
 import XCTest
 @testable import WeatherApp
 
-class WeatherAppTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class WeatherAppTests: BaseUnitTest {
+    
+    func testEmptyCityNameEntry(){
+        let searchCityVM = SearchCityViewModel.init(delegate: nil)
+        searchCityVM.cityName = String.empty
+        XCTAssertFalse(searchCityVM.validateCityName())
+    }
+    
+    func testThunderStormWeatherCode(){
+        XCTAssert(Utils.sharedInstance.getImageIconNameForWeatherCode(weatherCode: 200) == ImageConstants.thunderStormOne.rawValue)
+    }
+    
+    func testLightRainWeatherCode(){
+        XCTAssert(Utils.sharedInstance.getImageIconNameForWeatherCode(weatherCode: 302) == ImageConstants.lightRain.rawValue)
+    }
+    
+    func testShowerWeatherCode(){
+        XCTAssert(Utils.sharedInstance.getImageIconNameForWeatherCode(weatherCode: 501) == ImageConstants.shower.rawValue)
+    }
+    
+    func testSnowFourWeatherCode(){
+        XCTAssert(Utils.sharedInstance.getImageIconNameForWeatherCode(weatherCode: 601) == ImageConstants.snowFour.rawValue)
+    }
+    
+    func testFogWeatherCode(){
+        XCTAssert(Utils.sharedInstance.getImageIconNameForWeatherCode(weatherCode: 701) == ImageConstants.fog.rawValue)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testSunnyCode(){
+        XCTAssert(Utils.sharedInstance.getImageIconNameForWeatherCode(weatherCode: 800) == ImageConstants.sunny.rawValue)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testCloudyTwoCode(){
+        XCTAssert(Utils.sharedInstance.getImageIconNameForWeatherCode(weatherCode: 801) == ImageConstants.cloudyTwo.rawValue)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testUnavailableCode(){
+        XCTAssert(Utils.sharedInstance.getImageIconNameForWeatherCode(weatherCode: 1001) == ImageConstants.unavailable.rawValue)
     }
-
 }

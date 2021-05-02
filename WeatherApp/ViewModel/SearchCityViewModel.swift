@@ -14,9 +14,9 @@ protocol SearchCityNameDelegate:AnyObject{
 
 class SearchCityViewModel{
     var cityName:String
-    var cityInputDelegate:SearchCityNameDelegate
+    var cityInputDelegate:SearchCityNameDelegate?
     
-    init(delegate:SearchCityNameDelegate) {
+    init(delegate:SearchCityNameDelegate?) {
         self.cityInputDelegate = delegate
         self.cityName = String.empty
     }
@@ -24,9 +24,9 @@ class SearchCityViewModel{
     func getWeatherForCity(){
         //The city name is validated before making the API call
         if validateCityName() {
-            self.cityInputDelegate.searchForCitySuccessful()
+            self.cityInputDelegate?.searchForCitySuccessful()
         }else{
-            self.cityInputDelegate.searchForCityFailed(errorMessage: ErrorMessages.enterValidCityName.rawValue)
+            self.cityInputDelegate?.searchForCityFailed(errorMessage: ErrorMessages.enterValidCityName.rawValue)
         }
     }
     

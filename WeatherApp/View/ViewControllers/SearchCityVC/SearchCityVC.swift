@@ -20,6 +20,12 @@ class SearchCityVC: UIViewController {
         self.setupUI()
         self.cityNameTextField.delegate = self
         self.createTapGestureToDismissKeyboard()
+        self.setupAccessbilityIdentifiers()
+    }
+    
+    func setupAccessbilityIdentifiers(){
+        self.cityNameTextField.accessibilityIdentifier = AccessibilityIdentifers.cityNameTextField
+        self.submitButton.accessibilityIdentifier = AccessibilityIdentifers.searchButton
     }
     
     func setupUI(){

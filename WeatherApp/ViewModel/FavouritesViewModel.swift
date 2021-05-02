@@ -17,10 +17,10 @@ protocol FavouritesDelegate:AnyObject{
 
 class FavouritesViewModel{
     var favouriteList : [String]
-    var favouritesDelegate:FavouritesDelegate
+    var favouritesDelegate:FavouritesDelegate?
 
     
-    init(favouritesDelegate:FavouritesDelegate,favouriteList:[String] = []) {
+    init(favouritesDelegate:FavouritesDelegate?,favouriteList:[String] = []) {
         self.favouritesDelegate = favouritesDelegate
         self.favouriteList = favouriteList
     }
@@ -31,12 +31,12 @@ class FavouritesViewModel{
                 case .success(let favouritesList):
                     self?.favouriteList = favouritesList
                     if self?.favouriteList.isEmpty ?? true{
-                        self?.favouritesDelegate.noFavouritesAdded()
+                        self?.favouritesDelegate?.noFavouritesAdded()
                     }else{
-                        self?.favouritesDelegate.getFavouritesSuccessful()
+                        self?.favouritesDelegate?.getFavouritesSuccessful()
                     }
                 case .failure(let errorMessage):
-                    self?.favouritesDelegate.getFavouritesFailed(errorMessage: errorMessage.rawValue)
+                    self?.favouritesDelegate?.getFavouritesFailed(errorMessage: errorMessage.rawValue)
                 }
             }
     }
@@ -47,16 +47,15 @@ class FavouritesViewModel{
         
         PersistenceManager.updateFavourites(favourite: selectedFavourite, actionType: .delete) { [weak self] (error) in
             if let errorMessage = error {
-                self?.favouritesDelegate.deleteFavouriteFailed(errorMessage: (errorMessage as? ErrorMessages)?.rawValue ?? String.empty)
+                self?.favouritesDelegate?.deleteFavouriteFailed(errorMessage: (errorMessage as? ErrorMessages)?.rawValue ?? String.empty)
                 return
             }else{
                 if self?.favouriteList.isEmpty ?? true{
-                    self?.favouritesDelegate.noFavouritesAdded()
+                    self?.favouritesDelegate?.noFavouritesAdded()
                 }else{
-                    self?.favouritesDelegate.deleteFavouriteSuccessful(indexDeleted:indexOfFavourite)
+                    self?.favouritesDelegate?.deleteFavouriteSuccessful(indexDeleted:indexOfFavourite)
                 }
             }
         }
     }
-    
 }

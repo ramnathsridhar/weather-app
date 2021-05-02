@@ -24,6 +24,11 @@ class WeatherInformationVC: UIViewController {
         self.getWeatherDetailsForCity()
     }
     
+    func setupAccessbilityIdentifiers(){
+        self.navigationController?.navigationBar.backItem?.backBarButtonItem?.accessibilityIdentifier = AccessibilityIdentifers.weatherInformationbackButton
+        self.navigationController?.navigationBar.backItem?.rightBarButtonItem?.accessibilityIdentifier = AccessibilityIdentifers.addFavButton
+    }
+    
     func getWeatherDetailsForCity(){
         self.weatherDetailsVM?.getWeatherForCity()
     }

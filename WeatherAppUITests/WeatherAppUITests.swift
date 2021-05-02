@@ -6,37 +6,81 @@
 //
 
 import XCTest
+@testable import WeatherApp
 
-class WeatherAppUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+class WeatherAppUITests: BaseUITest {    
+    func testEmptyCityNameEntry(){
+        let cityTextField = app.textFields["cityTextField"]
+        cityTextField.tap()
+        typeTextInTextField(textField: cityTextField, text: "")
+        app.alerts["Error"].scrollViews.otherElements.buttons["OK"].tap()
+        XCTAssert(app.staticTexts["Search Weather"].exists)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testInvalidCityNameEntry(){
+        let cityTextField = app.textFields["cityTextField"]
+        cityTextField.tap()
+        typeTextInTextField(textField: cityTextField, text: "GG")
+        app.alerts["Error"].scrollViews.otherElements.buttons["OK"].tap()
+        XCTAssert(app.staticTexts["Search Weather"].exists)
     }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testValidCityNameEntry(){
+        let cityTextField = app.textFields["cityTextField"]
+        cityTextField.tap()
+        typeTextInTextField(textField: cityTextField, text: "Chennai")
+        XCUIApplication().navigationBars["Chennai"].staticTexts["Chennai"].exists
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    func testAddAndDeleteFavourite(){
+        let cityTextField = app.textFields["cityTextField"]
+        cityTextField.tap()
+        typeTextInTextField(textField: cityTextField, text: "Chennai")
+        XCUIApplication().navigationBars["Chennai"].staticTexts["Chennai"].tap()
+        app.navigationBars["Chennai"].buttons["Add"].tap()
+        app.alerts["Success"].scrollViews.otherElements.buttons["OK"].tap()
+        app.tabBars["Tab Bar"]/*@START_MENU_TOKEN@*/.buttons["favouriteTabBarButton"]/*[[".buttons[\"Favorites\"]",".buttons[\"favouriteTabBarButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let favouritestableviewTable = app.tables["favouritesTableView"]
+        favouritestableviewTable/*@START_MENU_TOKEN@*/.staticTexts["Chennai"]/*[[".cells.staticTexts[\"Chennai\"]",".staticTexts[\"Chennai\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
+        favouritestableviewTable/*@START_MENU_TOKEN@*/.buttons["Delete"]/*[[".cells.buttons[\"Delete\"]",".buttons[\"Delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssert(app.staticTexts["No Favourties Added"].exists)
+    }
+    
+    func testViewFavouriteWeather(){
+        let cityTextField = app.textFields["cityTextField"]
+        cityTextField.tap()
+        typeTextInTextField(textField: cityTextField, text: "Chennai")
+        XCUIApplication().navigationBars["Chennai"].staticTexts["Chennai"].tap()
+        app.navigationBars["Chennai"].buttons["Add"].tap()
+        app.alerts["Success"].scrollViews.otherElements.buttons["OK"].tap()
+        app.tabBars["Tab Bar"]/*@START_MENU_TOKEN@*/.buttons["favouriteTabBarButton"]/*[[".buttons[\"Favorites\"]",".buttons[\"favouriteTabBarButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let favouritestableviewTable = app.tables["favouritesTableView"]
+        favouritestableviewTable/*@START_MENU_TOKEN@*/.staticTexts["Chennai"]/*[[".cells.staticTexts[\"Chennai\"]",".staticTexts[\"Chennai\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCUIApplication().navigationBars["Chennai"].buttons["Favourites"].tap()
+        favouritestableviewTable/*@START_MENU_TOKEN@*/.staticTexts["Chennai"]/*[[".cells.staticTexts[\"Chennai\"]",".staticTexts[\"Chennai\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
+        favouritestableviewTable/*@START_MENU_TOKEN@*/.buttons["Delete"]/*[[".cells.buttons[\"Delete\"]",".buttons[\"Delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssert(app.staticTexts["No Favourties Added"].exists)
+    }
+    
+    
+    func testAddPreExistingCityAsFavourite(){
+        let cityTextField = app.textFields["cityTextField"]
+        cityTextField.tap()
+        typeTextInTextField(textField: cityTextField, text: "Chennai")
+        XCUIApplication().navigationBars["Chennai"].staticTexts["Chennai"].tap()
+        app.navigationBars["Chennai"].buttons["Add"].tap()
+        app.alerts["Success"].scrollViews.otherElements.buttons["OK"].tap()
+        app.navigationBars["Chennai"].buttons["Add"].tap()
+        let elementsQuery = app.alerts["Error"].scrollViews.otherElements
+        elementsQuery.staticTexts["City already added as favourtie"].tap()
+        app.alerts["Error"].scrollViews.otherElements.buttons["OK"].tap()
+        app.tabBars["Tab Bar"]/*@START_MENU_TOKEN@*/.buttons["favouriteTabBarButton"]/*[[".buttons[\"Favorites\"]",".buttons[\"favouriteTabBarButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let favouritestableviewTable = app.tables["favouritesTableView"]
+        favouritestableviewTable/*@START_MENU_TOKEN@*/.staticTexts["Chennai"]/*[[".cells.staticTexts[\"Chennai\"]",".staticTexts[\"Chennai\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCUIApplication().navigationBars["Chennai"].buttons["Favourites"].tap()
+        favouritestableviewTable/*@START_MENU_TOKEN@*/.staticTexts["Chennai"]/*[[".cells.staticTexts[\"Chennai\"]",".staticTexts[\"Chennai\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
+        favouritestableviewTable/*@START_MENU_TOKEN@*/.buttons["Delete"]/*[[".cells.buttons[\"Delete\"]",".buttons[\"Delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssert(app.staticTexts["No Favourties Added"].exists)
     }
 }
