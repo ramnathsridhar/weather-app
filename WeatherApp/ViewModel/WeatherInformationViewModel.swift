@@ -17,10 +17,10 @@ protocol CityWeatherDelegate:AnyObject{
 class WeatherInformationViewModel{
     var cityName:String
     var cityWeatherDetails:WeatherModel?
-    var weatherDelegate:CityWeatherDelegate
+    var weatherDelegate:CityWeatherDelegate?
     
     
-    init(weatherDetails:WeatherModel? = nil ,cityName:String,cityWeatherdelegate:CityWeatherDelegate) {
+    init(weatherDetails:WeatherModel? = nil ,cityName:String,cityWeatherdelegate:CityWeatherDelegate?) {
         self.cityWeatherDetails = weatherDetails
         self.cityName = cityName
         self.weatherDelegate = cityWeatherdelegate
@@ -32,10 +32,10 @@ class WeatherInformationViewModel{
             switch result{
             case .failure(let errorMessage):
                 print(errorMessage)
-                self.weatherDelegate.getWeatherForCityFailed(errorMessage: errorMessage.rawValue)
+                self.weatherDelegate?.getWeatherForCityFailed(errorMessage: errorMessage.rawValue)
             case .success(let weatherDetailsForCity):
                 self.cityWeatherDetails = weatherDetailsForCity
-                self.weatherDelegate.getWeatherForCitySuccessful(weatherDetails: weatherDetailsForCity)
+                self.weatherDelegate?.getWeatherForCitySuccessful(weatherDetails: weatherDetailsForCity)
             }
         }
     }
@@ -43,9 +43,9 @@ class WeatherInformationViewModel{
     func addFavourite(){
         PersistenceManager.updateFavourites(favourite: self.cityName, actionType: .add) { (error) in
             if let error = error {
-                self.weatherDelegate.addFavouriteFailed(errorMessage: (error as? ErrorMessages)?.rawValue ?? String.empty)
+                self.weatherDelegate?.addFavouriteFailed(errorMessage: (error as? ErrorMessages)?.rawValue ?? String.empty)
             }
-            self.weatherDelegate.addFavouriteSuccessul()            
+            self.weatherDelegate?.addFavouriteSuccessul()
         }
     }
     

@@ -23,7 +23,7 @@ class WATabBarController: UITabBarController {
         searchVC.searchCityViewModel = SearchCityViewModel.init(delegate: searchVC)
         //Setting the icon in the tab bar to the default search icon
         searchVC.tabBarItem = UITabBarItem.init(tabBarSystemItem: .search, tag: 0)
-        
+        searchVC.tabBarItem.accessibilityIdentifier = AccessibilityIdentifers.searchTabBarButton
         return UINavigationController(rootViewController: searchVC)
     }
     
@@ -34,6 +34,7 @@ class WATabBarController: UITabBarController {
         favourtiesVC.favouritesViewModel = FavouritesViewModel.init(favouritesDelegate: favourtiesVC)
         //Setting the icon in the tab bar to the default favourite icon
         favourtiesVC.tabBarItem = UITabBarItem.init(tabBarSystemItem: .favorites, tag: 1)
+        favourtiesVC.tabBarItem.accessibilityIdentifier = AccessibilityIdentifers.favouriteTabBarButton
         return UINavigationController(rootViewController: favourtiesVC)
     }
 }

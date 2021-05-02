@@ -21,11 +21,17 @@ class FavouritesVC: UIViewController {
         self.favouritesTableView.register(UINib.init(nibName: "FavouritesTableViewCell", bundle: nil), forCellReuseIdentifier: FavouritesTableViewCell.reuseId)
         self.favouritesTableView.tableFooterView = UIView()
         self.view.backgroundColor = UIColor.init(hexString: ColorConstants.primaryBlueColour)
+        self.setupAccessbilityIdentifiers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.favouritesViewModel?.getFavourites()
+    }
+    
+    func setupAccessbilityIdentifiers(){
+        self.favouritesTableView.accessibilityIdentifier = AccessibilityIdentifers.favouritesTableView
+        self.navigationController?.navigationBar.backItem?.backBarButtonItem?.accessibilityIdentifier = AccessibilityIdentifers.favouritesNavBarBackButton
     }
 }
 
