@@ -4,13 +4,13 @@ Project description :
 iOS Weather app built using OpenWeather API to display the current weather of a city entered by user .  The unit of measurement used is metric .
 
 Technical information :
-Development Language Used :  Swift 5
-Current Version : 1.0
-Build : 1
-Deployment target : iOS 14.4
-Supported Devices : iPhone , iPad
-Third Party Software : OpenWeather API
-Github URL : https://github.com/ramnathsridhar/weather-app.git
+1. Development Language Used :  Swift 5
+2. Current Version : 1.0
+3. Build : 1
+4. Deployment target : iOS 14.4
+5. Supported Devices : iPhone , iPad
+6. Third Party Software : OpenWeather API
+7. Github URL : https://github.com/ramnathsridhar/weather-app.git
 
 Steps to run project :
 1. Download proejct from github URL
