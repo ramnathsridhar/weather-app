@@ -48,33 +48,9 @@ class BaseUITest: XCTestCase {
            XCTAssertFalse(true)
         }
     }
-    
-    //Used when element might take time to come up on screen
-    func waitForElementToAppear(element : XCUIElement){
-        //Predicate to validate , before wait time gets over
-        let predicate = NSPredicate(format:"exists == true")
-        //Checks if predicate is true for the element
-        let expectations = expectation(for: predicate, evaluatedWith: element, handler: nil)
-        //Waits for 30s till the element comes on screen
-        let result = XCTWaiter().wait(for: [expectations], timeout: 30)
-        if result == XCTWaiter.Result.timedOut{
-            XCTAssertTrue(true)
-        }else{
-           XCTAssertFalse(true)
-        }
-    }
-    
 }
 
 extension XCUIElement{
-    //Check if the elements frame coordiantes are present on screen
-    func isVisibleOnScreen() -> Bool{
-        guard self.exists && !self.frame.isEmpty else {
-            return false
-        }
-        return XCUIApplication().windows.element(boundBy: 0).frame.contains(self.frame)
-    }
-    
     //Clears string if text is present in the the element
     func clearText(){
         guard let stringValue = self.value as? String else { return }

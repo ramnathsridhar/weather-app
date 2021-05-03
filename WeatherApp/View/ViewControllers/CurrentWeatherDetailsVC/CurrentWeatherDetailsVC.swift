@@ -27,6 +27,7 @@ class CurrentWeatherDetailsVC: UIViewController {
     var sunsetTime: Int = 0
     var updatedTime: Int = 0
 
+    //The data to be displayed for the enetered city are passed in the init method
     init(maxTemp:Double,minTemp:Double,humidity:Int,feelsLike:Double,sunriseTime:Int,sunsetTime:Int,updatedTime:Int) {
         super.init(nibName: nil, bundle: nil)
         self.maxTemp = maxTemp
@@ -47,6 +48,7 @@ class CurrentWeatherDetailsVC: UIViewController {
         self.configureDescritpionLabels()
     }
     
+    //Displaying the values from the response with the corresponding strings
     func configureDescritpionLabels(){
         self.maximumTempLabel.text = AppMessages.maxTempIs.rawValue + String.space + String.init(describing: self.maxTemp).getTemperatureInCelcius()
         self.minimumTempLabel.text = AppMessages.minTempIs.rawValue + String.space + String.init(describing: self.minTemp).getTemperatureInCelcius()

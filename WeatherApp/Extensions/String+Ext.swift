@@ -12,11 +12,11 @@ extension String{
     public static let empty = ""
     public static let hash = "#"
     public static let percentage = "%"
-    public static let degreeCelciusSybmol = "ºC"
+    public static let degreeCelsiusSybmol = "ºC"
     
     func getTemperatureInCelcius() -> String {
-        let tempInCelcius = (Double(self) ?? 0) - 273
-        return String(format: "%.1f", tempInCelcius) + String.degreeCelciusSybmol
+        let tempInCelsius = (Double(self) ?? 0) - 273
+        return String(format: "%.1f", tempInCelsius) + String.degreeCelsiusSybmol
     }
     
     func createDateTime() -> String {
@@ -24,10 +24,13 @@ extension String{
         if let unixTime = Double(self) {
             let date = Date(timeIntervalSince1970: unixTime)
             let dateFormatter = DateFormatter()
-            let timezone = TimeZone.current.abbreviation() ?? "CET"  // get current TimeZone abbreviation or set to CET
-            dateFormatter.timeZone = TimeZone(abbreviation: timezone) //Set timezone that you want
+            // get current TimeZone
+            let timezone = TimeZone.current.abbreviation() ?? "CET"
+            //Set timezone
+            dateFormatter.timeZone = TimeZone(abbreviation: timezone)
             dateFormatter.locale = NSLocale.current
-            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm" //Specify your format that you want
+            //Specify format required
+            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
             strDate = dateFormatter.string(from: date)
         }
         return strDate
@@ -38,13 +41,15 @@ extension String{
         if let unixTime = Double(self) {
             let date = Date(timeIntervalSince1970: unixTime)
             let dateFormatter = DateFormatter()
-            let timezone = TimeZone.current.abbreviation() ?? "CET"  // get current TimeZone abbreviation or set to CET
-            dateFormatter.timeZone = TimeZone(abbreviation: timezone) //Set timezone that you want
+            // get current TimeZone
+            let timezone = TimeZone.current.abbreviation() ?? "CET"
+            //Set timezone that you want
+            dateFormatter.timeZone = TimeZone(abbreviation: timezone)
             dateFormatter.locale = NSLocale.current
-            dateFormatter.dateFormat = "HH:mm" //Specify your format that you want
+            //Specify format required
+            dateFormatter.dateFormat = "HH:mm"
             strDate = dateFormatter.string(from: date)
         }
         return strDate
     }
-    
 }

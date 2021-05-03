@@ -27,7 +27,7 @@ class WeatherInformationViewModel{
     }
     
     func getWeatherForCity(){
-        //The city name is validated before making the API call
+        //The API call is made the get the weather for the entered input
         NetworkManager.sharedInstance.getWeatherForCity(cityName: self.cityName) { (result) in
             switch result{
             case .failure(let errorMessage):
@@ -40,6 +40,7 @@ class WeatherInformationViewModel{
         }
     }
     
+    //The city for which the weather is retrieved is added to as favourite
     func addFavourite(){
         PersistenceManager.updateFavourites(favourite: self.cityName, actionType: .add) { (error) in
             if let error = error {

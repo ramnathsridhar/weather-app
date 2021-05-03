@@ -8,7 +8,6 @@
 import XCTest
 @testable import WeatherApp
 
-
 class WeatherAppUITests: BaseUITest {    
     func testEmptyCityNameEntry(){
         let cityTextField = app.textFields["cityTextField"]
