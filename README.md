@@ -1,7 +1,7 @@
 # weather-app
 
 Project description :
-iOS Weather app built using OpenWeather API to display the current weather of a city entered by user .  The unit of measurement used is metric .
+iOS Weather app built using OpenWeather API to display the current weather of a city entered by user and manage (add/remove) a list of favourtie cities . The default unit of measurement used is metric .
 
 Technical information :
 1. Development Language Used :  Swift 5
