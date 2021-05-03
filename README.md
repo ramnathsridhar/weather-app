@@ -40,19 +40,19 @@ Future Improvements :
 
 Project Structure : 
 
-Extensions : Contains the extensions of String , UIViewController and UIColour
+ Extensions : Contains the extensions of String , UIViewController and UIColour
 
-Utilties : Contains constants used in app and utiity functions 
+ Utilties : Contains constants used in app and utiity functions 
 
-Managers : Contains the manager classes for networking and persistance
+ Managers : Contains the manager classes for networking and persistance
 
-ViewModel : Contains the view model of the corresponding view controllers
+ ViewModel : Contains the view model of the corresponding view controllers
 
-Model : Contains the strcuture of the response json
+ Model : Contains the strcuture of the response json
 
-VIew : Contains the view controller and the custom views which have been used in the app 
+ View : Contains the view controller and the custom views which have been used in the app 
 
-WeatherAppTests : Contains the Unit tests to be run on the app
+ WeatherAppTests : Contains the Unit tests to be run on the app
 
-WeatherAppUITests : Contains the UI tests to be run on he app
+ WeatherAppUITests : Contains the UI tests to be run on he app
 
