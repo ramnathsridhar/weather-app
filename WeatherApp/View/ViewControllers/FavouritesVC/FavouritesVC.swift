@@ -26,6 +26,7 @@ class FavouritesVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //Get the favourties stored by user
         self.favouritesViewModel?.getFavourites()
     }
     
@@ -59,6 +60,7 @@ extension FavouritesVC:UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //Perform action only if the editing style is delete
         guard editingStyle == .delete else { return }
         
         self.favouritesViewModel?.deleteFavourite(indexOfFavourite: indexPath)

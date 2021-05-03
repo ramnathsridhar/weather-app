@@ -27,6 +27,7 @@ class FavouritesTableViewCell: UITableViewCell {
     
     func setCityName(cityName:String){
         self.cityName.text = cityName
+        //To get the first character of the city name
         self.cityInitialLabel.text = String(describing: cityName.prefix(1)) 
     }
     

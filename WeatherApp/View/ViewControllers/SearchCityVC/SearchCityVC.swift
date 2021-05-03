@@ -37,6 +37,7 @@ class SearchCityVC: UIViewController {
         self.setUpAnimation()
     }
     
+    //Anitmation applied on the logo image view
     func setUpAnimation() {
         UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat,.autoreverse]) {
             self.logoImageView.transform = CGAffineTransform.init(scaleX: 1.2, y: 1.2)

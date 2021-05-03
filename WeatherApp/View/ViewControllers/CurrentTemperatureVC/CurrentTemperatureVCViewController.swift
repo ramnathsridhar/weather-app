@@ -34,6 +34,7 @@ class CurrentTemperatureVCViewController: UIViewController {
         self.setUpAnimtation()
     }
     
+    //Anitmation applied to the current weather condition image view
     func setUpAnimtation() {
         UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat,.autoreverse]) {
             self.currentWeatherConditionImageView.transform = self.currentWeatherConditionImageView.transform.rotated(by: .pi * 2)

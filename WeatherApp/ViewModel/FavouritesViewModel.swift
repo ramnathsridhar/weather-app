@@ -25,6 +25,7 @@ class FavouritesViewModel{
         self.favouriteList = favouriteList
     }
     
+    //Function to get the favourites ssave by user
     func getFavourites(){
             PersistenceManager.retrieveFavourites { [weak self] (result) in
                 switch result {
@@ -41,6 +42,7 @@ class FavouritesViewModel{
             }
     }
     
+    //Function to delete the favourite selected by user
     func deleteFavourite(indexOfFavourite:IndexPath){
         let selectedFavourite = favouriteList[indexOfFavourite.row]
         self.favouriteList.remove(at: indexOfFavourite.row)

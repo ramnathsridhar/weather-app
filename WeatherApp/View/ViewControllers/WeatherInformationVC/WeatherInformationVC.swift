@@ -8,13 +8,11 @@
 import UIKit
 
 class WeatherInformationVC: UIViewController {
-
     
     @IBOutlet public var currentWeatherDetilsView:UIView!
     @IBOutlet public var weatherDetailsView:UIView!
 
     var weatherDetailsVM:WeatherInformationViewModel?
-
     
     override func viewDidLoad() {
         self.displayLoadingView()
@@ -22,6 +20,7 @@ class WeatherInformationVC: UIViewController {
         // Do any additional setup after loading the view.
         self.configureNavigationController()
         self.getWeatherDetailsForCity()
+        self.setupAccessbilityIdentifiers()
     }
     
     func setupAccessbilityIdentifiers(){
@@ -33,6 +32,7 @@ class WeatherInformationVC: UIViewController {
         self.weatherDetailsVM?.getWeatherForCity()
     }
     
+    //Adding the add favourite button in the nav bar
     func configureNavigationController(){
         let addFavButton = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addFavButtonTapped))
         self.navigationItem.rightBarButtonItem = addFavButton
