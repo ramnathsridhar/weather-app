@@ -4,13 +4,13 @@ Project description :
 iOS Weather app built using OpenWeather API to display the current weather of a city entered by user .  The unit of measurement used is metric .
 
 Technical information :
-Development Language Used :  Swift 5
-Current Version : 1.0
-Build : 1
-Deployment target : iOS 14.4
-Supported Devices : iPhone , iPad
-Third Party Software : OpenWeather API
-Github URL : https://github.com/ramnathsridhar/weather-app.git
+1. Development Language Used :  Swift 5
+2. Current Version : 1.0
+3. Build : 1
+4. Deployment target : iOS 14.4
+5. Supported Devices : iPhone , iPad
+6. Third Party Software : OpenWeather API
+7. Github URL : https://github.com/ramnathsridhar/weather-app.git
 
 Steps to run project :
 1. Download proejct from github URL
@@ -40,19 +40,19 @@ Future Improvements :
 
 Project Structure : 
 
-Extensions : Contains the extensions of String , UIViewController and UIColour
+ Extensions : Contains the extensions of String , UIViewController and UIColour
 
-Utilties : Contains constants used in app and utiity functions 
+ Utilties : Contains constants used in app and utiity functions 
 
-Managers : Contains the manager classes for networking and persistance
+ Managers : Contains the manager classes for networking and persistance
 
-ViewModel : Contains the view model of the corresponding view controllers
+ ViewModel : Contains the view model of the corresponding view controllers
 
-Model : Contains the strcuture of the response json
+ Model : Contains the strcuture of the response json
 
-VIew : Contains the view controller and the custom views which have been used in the app 
+ View : Contains the view controller and the custom views which have been used in the app 
 
-WeatherAppTests : Contains the Unit tests to be run on the app
+ WeatherAppTests : Contains the Unit tests to be run on the app
 
-WeatherAppUITests : Contains the UI tests to be run on he app
+ WeatherAppUITests : Contains the UI tests to be run on he app
 
