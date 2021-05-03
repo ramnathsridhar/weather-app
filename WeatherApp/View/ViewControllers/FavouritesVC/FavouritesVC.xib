@@ -10,7 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouritesVC" customModule="WeatherApp" customModuleProvider="target">
             <connections>
                 <outlet property="favouritesTableView" destination="0Oh-MG-XZw" id="C8t-uA-ZCC"/>
-                <outlet property="noFavourtiesAddedLabel" destination="9YP-tv-LXe" id="tHn-jC-AmW"/>
+                <outlet property="noFavAddedLabel" destination="9YP-tv-LXe" id="8Pq-pG-7Gh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Favourties Added" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YP-tv-LXe">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Favorites Added" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YP-tv-LXe">
                     <rect key="frame" x="20" y="418" width="374" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="hRV-xU-qo0"/>

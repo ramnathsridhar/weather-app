@@ -9,7 +9,7 @@ import UIKit
 
 class FavouritesVC: UIViewController {
 
-    @IBOutlet weak var noFavourtiesAddedLabel: WAPrimaryLabel!
+    @IBOutlet weak var noFavAddedLabel: UILabel!
     @IBOutlet weak var favouritesTableView: UITableView!
     
     var favouritesViewModel : FavouritesViewModel?
@@ -21,12 +21,13 @@ class FavouritesVC: UIViewController {
         self.favouritesTableView.register(UINib.init(nibName: "FavouritesTableViewCell", bundle: nil), forCellReuseIdentifier: FavouritesTableViewCell.reuseId)
         self.favouritesTableView.tableFooterView = UIView()
         self.view.backgroundColor = UIColor.init(hexString: ColorConstants.primaryBlueColour)
+        self.noFavAddedLabel.text = ErrorMessages.noFavAdded.rawValue
         self.setupAccessbilityIdentifiers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //Get the favourties stored by user
+        //Get the favourites stored by user
         self.favouritesViewModel?.getFavourites()
     }
     
@@ -71,7 +72,7 @@ extension FavouritesVC:UITableViewDelegate , UITableViewDataSource{
 extension FavouritesVC : FavouritesDelegate{
     func getFavouritesSuccessful() {
         self.favouritesTableView.isHidden = false
-        self.noFavourtiesAddedLabel.isHidden = true
+        self.noFavAddedLabel.isHidden = true
         self.favouritesTableView.bringSubviewToFront(self.view ?? UIView())
         self.favouritesTableView.reloadData()
     }
@@ -85,9 +86,9 @@ extension FavouritesVC : FavouritesDelegate{
     }
     
     func noFavouritesAdded() {
-        self.noFavourtiesAddedLabel.isHidden = false
+        self.noFavAddedLabel.isHidden = false
         self.favouritesTableView.isHidden = true
-        self.noFavourtiesAddedLabel.bringSubviewToFront(self.view ?? UIView())
+        self.noFavAddedLabel.bringSubviewToFront(self.view ?? UIView())
     }
     
     func getFavouritesFailed(errorMessage: String) {

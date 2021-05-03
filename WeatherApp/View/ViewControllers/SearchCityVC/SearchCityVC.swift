@@ -28,6 +28,11 @@ class SearchCityVC: UIViewController {
         self.submitButton.accessibilityIdentifier = AccessibilityIdentifers.searchButton
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.cityNameTextField.text = String.empty
+        self.searchCityViewModel?.cityName = String.empty
+    }
+    
     func setupUI(){
         self.view.backgroundColor = UIColor.init(hexString: ColorConstants.primaryBlueColour)
         self.logoImageView.image = UIImage.init(named: ImageConstants.globeIcon.rawValue)
