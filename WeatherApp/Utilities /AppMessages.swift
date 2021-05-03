@@ -9,10 +9,10 @@ import Foundation
 
 enum AppMessages : String {
     case okString = "OK"
-    case addFavouriteSuccessful = "Successfuly added as favourtie"
+    case addFavouriteSuccessful = "Successfuly added as favorite"
     case successString = "Success"
     case searchWeather = "Search Weather"
-    case favouriteCities = "Favourites"
+    case favouriteCities = "Favorites"
     case maxTempIs = "Maximum temperature is"
     case minTempIs = "Minimum temperature is"
     case humidityIs = "Humidity is"

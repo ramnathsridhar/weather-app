@@ -1,7 +1,7 @@
 # weather-app
 
 Project description :
-iOS Weather app built using OpenWeather API to display the current weather of a city entered by user and manage (add/remove) a list of favourtie cities . The default unit of measurement used is metric .
+iOS Weather app built using OpenWeather API to display the current weather of a city entered by user and manage (add/remove) a list of favourite cities . The default unit of measurement used is metric .
 
 Technical information :
 1. Development Language Used :  Swift 5
@@ -17,6 +17,15 @@ Steps to run project :
 1. Download proejct from github URL
 2. Open WeatherApp.xcodeproj
 3. Run the project
+
+App Usage :
+1. On launching the app , use can enter a city name in the textfield provided and click on "Search Weather" button or tap on return in the keyboard .
+2. If the city name is valid and the weather details are successfuly retrieved , user is taken to the next page where the current weather details are listed .
+3. If user wishes to add the city as a favourite , the right bar button in the navbar needs to be clicked 
+4. The result of the operation is shown as a popup 
+5. If the user wished to see the list of favourite cities , the "Favorites" tab needs to be selected 
+6. The list of favourite cities is listed in this page , if previously added
+7. If user wishes to delete a favourtie city , the city needs to be selected and swiped to the right , to display the delete option . On clicking of delete the favourite city is removed from the list
 
 iOS Development Technologies and Concepts used :
 1.   MVVM Architecture

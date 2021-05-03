@@ -49,9 +49,9 @@ enum PersistenceManager{
         }
     }
     
-    //Base function to retrieve favourties
+    //Base function to retrieve favourites
     static func retrieveFavourites(completed : @escaping(Result<[String],ErrorMessages>) -> Void){
-        guard let favourtiesData = defaults.object(forKey: PersistenceKeys.favourites ) as? Data else {
+        guard let favouritesData = defaults.object(forKey: PersistenceKeys.favourites ) as? Data else {
             completed(.success([]))
             return
         }
@@ -59,26 +59,26 @@ enum PersistenceManager{
         //Decode the received data into the model defined
         do{
             let decoder = JSONDecoder.init()
-            let favourties = try decoder.decode([String].self, from: favourtiesData)
-            completed(.success(favourties))
+            let favourites = try decoder.decode([String].self, from: favouritesData)
+            completed(.success(favourites))
         }catch{
             completed(.failure(.unableToFetchFavourtie))
         }
     }
     
-    //Base function to add favourties
+    //Base function to add favourites
     static func addFavourites(weatherData:[String]) -> ErrorMessages? {
         do {
             let encoder = JSONEncoder.init()
-            let encodedFavourties = try encoder.encode(weatherData)
-            defaults.setValue(encodedFavourties, forKey: PersistenceKeys.favourites )
+            let encodedFavourites = try encoder.encode(weatherData)
+            defaults.setValue(encodedFavourites, forKey: PersistenceKeys.favourites )
             return nil
         } catch  {
             return ErrorMessages.unableToAddFavourite
         }
     }
     
-    //Check if city name is already added in the favourties array
+    //Check if city name is already added in the favourites array
     static func checkIfCityAddedAsFavourite(cityName:String,favouritesList:[String]) -> Bool {
         if favouritesList.contains(cityName){
             return true
