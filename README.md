@@ -31,28 +31,19 @@ iOS Development Technologies and Concepts used :
 11. Extensions
 12. Resuable Views
 
-Future Improvements :
+Project Structure : 
+1.  Extensions : Contains the extensions of String , UIViewController and UIColour
+2. Utilties : Contains constants used in app and utiity functions 
+3. Managers : Contains the manager classes for networking and persistance
+4. ViewModel : Contains the view model of the corresponding view controllers
+5. Model : Contains the strcuture of the response json
+6. View : Contains the view controller and the custom views which have been used in the app 
+7. WeatherAppTests : Contains the Unit tests to be run on the app
+8. WeatherAppUITests : Contains the UI tests to be run on he app
+
+Scope of Improvement :
 1. Cache and display last update weather information in case of network unavailablity 
 2. Display hourly and daily weather forecase
 3. Take current user location
 4. Add addiitonal Unit and UI tests
 5. Provide option to choose the unit of measurement 
-
-Project Structure : 
-
- Extensions : Contains the extensions of String , UIViewController and UIColour
-
- Utilties : Contains constants used in app and utiity functions 
-
- Managers : Contains the manager classes for networking and persistance
-
- ViewModel : Contains the view model of the corresponding view controllers
-
- Model : Contains the strcuture of the response json
-
- View : Contains the view controller and the custom views which have been used in the app 
-
- WeatherAppTests : Contains the Unit tests to be run on the app
-
- WeatherAppUITests : Contains the UI tests to be run on he app
-
