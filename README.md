@@ -8,9 +8,10 @@ Technical information :
 2. Current Version : 1.0
 3. Build : 1
 4. Deployment target : iOS 14.4
-5. Supported Devices : iPhone , iPad
-6. Third Party Software : OpenWeather API
-7. Github URL : https://github.com/ramnathsridhar/weather-app.git
+5. XcodeVersion : 12.4
+6. Supported Devices : iPhone , iPad
+7. Third Party Software : OpenWeather API
+8. Github URL : https://github.com/ramnathsridhar/weather-app.git
 
 Steps to run project :
 1. Download proejct from github URL
